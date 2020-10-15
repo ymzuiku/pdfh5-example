@@ -1,8 +1,10 @@
 # pdfh5-example
 
-Use [https://www.npmjs.com/package/pdfh5]()
+Use [https://www.npmjs.com/package/pdfh5](https://www.npmjs.com/package/pdfh5)
 
 注意：本地绝对路径地址不能加载，跨域问题用代理或者服务端解决。
+
+Demo: [http://pdfh5.writeflowy.com/](http://pdfh5.writeflowy.com/)
 
 ### other-base-pdfjs
 
