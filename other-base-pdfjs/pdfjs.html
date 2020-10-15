@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./pdfjs/pdf.js"></script>
+  <script src="./pdfjs/pdf.worker.js"></script>
+</head>
+
+<body>
+  <script>
+    const loadingTask = pdfjsLib.getDocument("2git.pdf")
+    var scale = 0;
+    loadingTask.promise.then(function (pdf) {
+      function renderPdf(pageNumber) {
+        pdf.getPage(pageNumber).then(function (page) {
+          console.log('Page loaded');
+
+          if (!scale) {
+            scale = window.innerWidth / page.getViewport({ scale: 1 }).width;
+            scale = scale < 1 ? 1 : scale;
+          }
+
+          var viewport = page.getViewport({ scale: scale, });
+
+          // Prepare canvas using PDF page dimensions
+          var canvas = document.createElement('canvas');
+          document.body.appendChild(canvas)
+          var context = canvas.getContext('2d');
+          canvas.height = window.innerHeight // viewport.height;
+          canvas.width = window.innerWidth // viewport.width;
+
+          // Render PDF page into canvas context
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          var renderTask = page.render(renderContext);
+          renderTask.promise.then(function () {
+            console.log('Page rendered');
+          });
+        });
+      }
+      if (!pdf || !pdf._pdfInfo || !pdf._pdfInfo.numPages) {
+        return;
+      }
+      var len = pdf._pdfInfo.numPages;
+      for (var i = 0; i <= len; i++) {
+        renderPdf(i)
+      }
+    }, function (reason) {
+      // alert("资源访问失败")
+      console.error(reason);
+    });
+
+
+  </script>
+</body>
+
+</html>

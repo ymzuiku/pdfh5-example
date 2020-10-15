@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <script src="./js/pdf.js"></script> -->
+  <!-- <script src="./js/pdf.worker.js"></script> -->
+  <link rel="stylesheet" href="js/pdfh5.css" />
+  <script src="js/pdf.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="js/pdf.worker.js" type="text/javascript" charset="utf-8"></script> -->
+  <script src="js/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/pdfh5.js" type="text/javascript" charset="utf-8"></script>
+  <style>
+    body {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    .pdf-view {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .backTop,
+    .pageNum {
+      display: none !important;
+    }
+
+
+    .download-button {
+      z-index: 9999;
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      margin: 0px auto;
+      text-align: center;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 4px 16px;
+      color: #fff;
+      border-radius: 4px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 16px;
+      /* width: 100%; */
+    }
+
+    .download-button:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .download-button:active {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pdf-view"></div>
+  <!-- <div class="download-button">下载报告</div> -->
+  <div class="download-button">
+    <span><svg t="1602786071083" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="2494" width="12" height="12">
+        <path
+          d="M810.358233 266.008515C783.272929 151.281333 699.594753 0 511.979476 0c-144.014544 0-214.700582 64.740483-248.612263 119.131297a242.226297 242.226297 0 0 0-29.287362 67.603157C143.795504 212.71873 27.526882 286.267442 27.526882 440.411449c0 117.149445 61.437397 207.213587 172.861494 253.676995A444.595358 444.595358 0 0 0 357.835469 726.678891h22.020572v-66.061717h-22.020572S93.588599 660.617174 93.588599 440.411449c0-176.16458 198.185152-198.185152 198.185152-198.185152s0-176.16458 220.205725-176.16458 242.226297 264.24687 242.226297 264.24687a162.952236 162.952236 0 0 1 18.277075 0c45.142174 0 157.887505 14.093166 157.887505 154.144007 0 176.16458-264.24687 176.16458-264.24687 176.16458h-44.041145v66.061717h44.041145c114.286771 0 330.308587-50.647317 330.308587-242.226297 0-143.574132-93.367227-205.672147-186.073837-218.444079z"
+          p-id="2495" fill="currentColor"></path>
+        <path
+          d="M623.183367 822.248176l-89.183319 88.08229V446.136798a33.030859 33.030859 0 0 0-66.061717 0V924.864043l-88.08229-99.092576a30.608596 30.608596 0 0 0-22.020572-10.79008 31.92983 31.92983 0 0 0-22.020573 8.808229 33.030859 33.030859 0 0 0-1.54144 46.683613l132.123435 143.133721a32.810653 32.810653 0 0 0 32.370241 9.248641 33.251064 33.251064 0 0 0 32.150036-8.588023l143.133721-145.77619a33.030859 33.030859 0 0 0 0-46.683614 36.55415 36.55415 0 0 0-50.867522 0.440412z"
+          p-id="2496" fill="currentColor"></path>
+      </svg></span>
+    <span>下载</span>
+  </div>
+  <script>
+    var url = "./git.pdf";
+    var pdfh5 = new Pdfh5('.pdf-view', {
+      pdfurl: url,
+      renderType: 'canvas', // canvas | svg
+      maxZoom: 2,
+      scale: 3,
+    });
+
+    var btn = document.querySelector('.download-button');
+
+    if (btn) {
+      btn.onclick = function () {
+        window.open(url)
+      }
+    }
+  </script>
+</body>
+
+</html>
