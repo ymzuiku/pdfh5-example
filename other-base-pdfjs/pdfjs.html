@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="./pdfjs/pdf.js"></script>
-  <script src="./pdfjs/pdf.worker.js"></script>
+  <script src="./other-base-pdfjs/pdfjs/pdf.js"></script>
+  <script src="./other-base-pdfjs/pdfjs/pdf.worker.js"></script>
 </head>
 
 <body>
   <script>
-    const loadingTask = pdfjsLib.getDocument("2git.pdf")
+    const loadingTask = pdfjsLib.getDocument("git.pdf")
     var scale = 0;
     loadingTask.promise.then(function (pdf) {
       function renderPdf(pageNumber) {
